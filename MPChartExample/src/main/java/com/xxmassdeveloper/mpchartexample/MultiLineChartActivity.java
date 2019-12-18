@@ -138,12 +138,12 @@ public class MultiLineChartActivity extends DemoBase implements OnSeekBarChangeL
         chart.setData(data);
         chart.invalidate();
 
-        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener()
+        chart.setOnChartDataSetSelectedListener(new OnChartDataSetSelectedListener()
         {
             @Override
-            public void onValueSelected(Entry e, Highlight h)
+            public void onDataSetSelected(int dataSetIndex)
             {
-                System.out.println("VALUE SELECTED " + h.toString());
+                System.out.println("DATASET SELECTED " + dataSetIndex);
             }
 
             @Override

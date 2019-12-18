@@ -656,6 +656,17 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
             }
         }
 
+        //TODO fare le cose simili per mDataSetSelectionListner
+        if (callListener && mDataSetSelectionListener != null) {
+
+            if (!valuesToHighlight())
+                mDataSetSelectionListener.onNothingSelected();
+            else {
+                // notify the listener
+                mDataSetSelectionListener.onDataSetSelected(high.getDataSetIndex());
+            }
+        }
+
         // redraw the chart
         invalidate();
     }
