@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
+import com.github.mikephil.charting.listener.OnChartDataSetSelectedListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
@@ -33,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultiLineChartActivity extends DemoBase implements OnSeekBarChangeListener,
-        OnChartGestureListener, OnChartValueSelectedListener {
+        OnChartGestureListener, OnChartValueSelectedListener, OnChartDataSetSelectedListener {
 
     private LineChart chart;
     private SeekBar seekBarX, seekBarY;
@@ -59,6 +60,7 @@ public class MultiLineChartActivity extends DemoBase implements OnSeekBarChangeL
 
         chart = findViewById(R.id.chart1);
         chart.setOnChartValueSelectedListener(this);
+        chart.setOnChartDataSetSelectedListener(this);
 
         chart.setDrawGridBackground(false);
         chart.getDescription().setEnabled(false);
@@ -356,6 +358,11 @@ public class MultiLineChartActivity extends DemoBase implements OnSeekBarChangeL
         Log.i("VAL SELECTED",
                 "Value: " + e.getY() + ", xIndex: " + e.getX()
                         + ", DataSet index: " + h.getDataSetIndex());
+    }
+
+    @Override
+    public void onDataSetSelected(int dataSetIndex) {
+        Log.i("DATASET SELECTED", "" + dataSetIndex);
     }
 
     @Override
