@@ -43,6 +43,7 @@ import com.github.mikephil.charting.interfaces.datasets.IDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.listener.OnChartDataSetSelectedListener;
 import com.github.mikephil.charting.renderer.DataRenderer;
 import com.github.mikephil.charting.renderer.LegendRenderer;
 import com.github.mikephil.charting.utils.MPPointF;
@@ -136,6 +137,8 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
      * listener that is called when a value on the chart is selected
      */
     protected OnChartValueSelectedListener mSelectionListener;
+
+    protected OnChartDataSetSelectedListener mDataSetSelectionListener;
 
     protected ChartTouchListener mChartTouchListener;
 
@@ -968,6 +971,11 @@ public abstract class Chart<T extends ChartData<? extends IDataSet<? extends Ent
     public void setOnChartValueSelectedListener(OnChartValueSelectedListener l) {
         this.mSelectionListener = l;
     }
+
+    public void setOnChartDataSetSelectedListener(OnChartDataSetSelectedListener l) {
+        this.mDataSetSelectionListener = l;
+    }
+
 
     /**
      * Sets a gesture-listener for the chart for custom callbacks when executing
